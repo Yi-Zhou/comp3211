@@ -48,7 +48,7 @@
 \author{
 		\normalfont 								
         FU Kuo-hao \\
-        1411xxxxD
+        14112466D
         \and
         OUYANG Xiating \\
         14111773D
@@ -74,10 +74,7 @@
 \section{Software Requirement Specification}
 
 \subsection{Introduction}
-This document will include all requirements and functionalities of Edo, a course management platform for the Edward University of Smartness (EUS). This document will summarize the specifications and requirements obtained from Edward, our client and our proposed design of Edo.
-
-\subsubsection{Goals and objectives}
-This project aims at developing an online learning system (Edo) for Edward University of Smartness (EUS). It offers EUS a lightweight platform which helps teachers and students manage courses information. The system is supposed to help teachers distribute their course content and assess the performances of their students, while students can have easy access to course resources and finish assignments or quizzes on this platform.
+This document will include all requirements and functionalities of Edo, a course management system for the Edward University of Smartness (EUS). This document will summarize the specifications and requirements obtained from Edward, who is the president of EUS, and our proposed design of Edo.
 
 \subsubsection{Definitions}
 The following abbreviations are used throughout this document.
@@ -85,18 +82,22 @@ The following abbreviations are used throughout this document.
 	\item Course content: the slides, notes or other course related files
 	\item Assessment: assignment and quiz
 	\item User: students and professors
+	\item File: any document uploaded to Edo, including course slides, note, assignment instruction etc.
 \end{enumerate}
+
+\subsubsection{Goals and objectives}
+This project aims at developing an online course management system (Edo) for Edward University of Smartness (EUS). It offers EUS a lightweight platform which is supposed to help teachers distribute their course content and assess the performances of their students, while students can have easy access to course resources and finish assignments or quizzes on this platform.
 
 \subsubsection{Statement of scope}
 \begin{enumerate}
 	\item Description
-	\par Edo is a learning platform between professors and students where professors can upload assignments and set up quizzes and students can upload their assignment answers and complete quizzes. After the quizzes and assignments are assessed, professors can give their students grades, and students may login their accounts to view their grades.
+	\par Edo is a course management system between professors and students where professors can upload assignments and set up quizzes and students can upload their assignment answers and complete quizzes. After the quizzes and assignments are assessed, the grades can be given to students by professors and students may login their accounts to view their grades.
 	\item Major inputs
 	\par Major inputs include course resources, such as notes, assignment files and quiz questions from teachers and assessment submissions from students.
 	\item Processing Functionality
-	\par Edo should be able to process the uploaded file and course assessment information and return the corresponding results, such as the desired course content and attempted grades efficiently.
+	\par Edo should be able to store the uploaded file and course assessment information and return the corresponding results, such as the desired course content and attempted grades correctly and efficiently.
 	\item Outputs
-	\par Course content in the form of a web link displayed on the screen. The grades for each assessment. 
+	\par Course contents are returned in the form of a web link displayed on the screen. The grades for each assignment and quiz are also available. If a user intend to download a file from Edo, the correct file should be returned.
 	\item Functionality priority
 	\begin{itemize}
 		\item Essential
@@ -109,6 +110,7 @@ The following abbreviations are used throughout this document.
 		\begin{itemize}
 			\item More security issues: the system should be immune from DDoS attack; the system should be able to detect malicious accesses.
 			The system allows users to upload files from third-party storage systems like Google Drive, Dropbox, Onedrive, etc.
+			\item Customizability: The users may choose to customize their personal homepage when displaying the course information.
 		\end{itemize}
 		\item Future
 		\begin{itemize}
@@ -126,37 +128,39 @@ The development of Edo is mostly limited by the time of delivery since the EUS w
 
 \subsubsection{User profiles}
 \begin{itemize}
-	\item The students of EUS: This user has access to his/her registered courses and view all the related course contents. They can also submit the assignment answers and answer quiz questions posted on Edo.
-	\item The professors of EUS: This user is allowed to create the course information in Edo and upload corresponding course materials, including notes, assignments and quizzes on Edo for students' reference. He/She can also grade the assessments for his/her courses.
+	\item The students of EUS: This user will have the access to his/her registered courses and view all the related course contents. They can also submit the assignment answers and answer quiz questions posted on Edo.
+	\item The professors (and Teaching assistants) of EUS: This user will have access to create the course information in Edo and upload corresponding course materials, including course note, course assignment and quizzes on Edo for students' reference.
 \end{itemize}
 
 
 \subsubsection{Use-cases}
 \begin{itemize}
-	\item Use-Case Descriptions
+	\item Use-Case Descriptions \footnote{The later usecases are presumed to be performed while staying logged in.}
+	\par Student/Professor logs in
+	\begin{enumerate}
+		\item The user enters his/her username and password, and clicks the enter button.
+		\item The user logs in Edo and enter his/her personal homepage.
+	\end{enumerate}
 	\par Student view course
 	\begin{enumerate}
-		\item The student enters his/her username and password, and clicks the enter button.
-		\item The student logs in Edo and enters his/her personal homepage. 
-		\item The homepage shows a list of courses he/she has registered in the semester.
 		\item The student clicks a course displayed on the personal homepage.
-		\item The system lists the notes, assignments and quizzes related to the course.
+		\item The course notes, course assignment and course quizzes are shown.
 	\end{enumerate}
 	\par Student view course content
 	\begin{enumerate}
-		\item The student clicks one course notes, and the computer downloads the course notes.
+		\item The student clicks one course note, and the course note is downloaded.
 	\end{enumerate}
 	\par Student answer assignment
 	\begin{enumerate}
-		\item The student clicks one assignment, and the page shows the assignment's introduction and guide.
-		\item The student uploads his/her answer to the assignment to Edo.
-		\item The student clicks the finish button on the page.
+		\item The student clicks one assignment, and the assignment introduction and guide is displayed.
+		\item The student upload his answer to the assignment to Edo.
+		\item The student clicks finish button to finish, and returns to course information page.
 	\end{enumerate}
 	\par Student answer quiz
 	\begin{enumerate}
 		\item The student clicks one course quiz, and the quiz questions are displayed.
-		\item The student chooses one of the four choices for each quiz question by ticking the box ahead of each choice, and clicks the submit button.
-		\item The student clicks the completed assignment and quiz. The grades, if available, will be shown to them. 
+		\item The student chooses one of the four choices for each quiz question by ticking the box ahead of each choice, and clicks submit button.
+		\item The student clicks the completed assignment and quiz, the grades, if available, will be shown to them. 
 	\end{enumerate}
 	\par Professor log off
 	\begin{enumerate}
@@ -166,19 +170,19 @@ The development of Edo is mostly limited by the time of delivery since the EUS w
 	\par Professor View course
 	\begin{enumerate}
 		\item The professor enters his/her username and password, and clicks the enter button.
-		\item The professor enters his/her personal homepage, and clicks on a course he teaches.
+		\item The professor enters the personal homepage, and clicks on a course he teaches.
 	\end{enumerate}
 	\par Professor create assignment
 	\begin{enumerate}
-		\item The professor clicks the create content button, and chooses one file from his/her PC to upload.
+		\item The professor clicks the create content button, and chooses one file from his/her PC for upload.
 		\item The professor clicks the create assignment button, and enters the assignment information and chooses a file for that assignment.
 		\item The professor clicks the submit button, and the assignment is created.
-		\item The professor clicks the assignment submission button to view all assignment submissions, and marks those submissions by entering the grades in the grade bar.
+		\item The professor clicks the assignment submission button to view all assignment submissions, and give grades to those submissions by entering the grades in the grade bar.
 	\end{enumerate}
 	\par Professor create quiz
 	\begin{enumerate}
 		\item The professor clicks create quiz.
-		\item The professor enters the title of the quiz.
+		\item The professor enters the name of the quiz.
 		\item The professor sets up one MC question.
 		\item The professor enters the description of the MC question.
 		\item Then, the teacher enters the four options for the MC question.
@@ -191,12 +195,13 @@ The development of Edo is mostly limited by the time of delivery since the EUS w
 		\item The professor clicks the logoff button.
 		\item The professor is logged off the system.
 	\end{enumerate}
+	
 	\item Use-Case Diagram
 	\begin{figure}[!ht]
 		\begin{center}
 			%\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{usecase}
 		\end{center}
-		\caption{Use case diagram of Edo}
+		\caption{Use case diagram}
 	\end{figure}
 	
 \end{itemize}
@@ -206,7 +211,7 @@ The development of Edo is mostly limited by the time of delivery since the EUS w
 \subsection{Data Model and Description}
 
 \subsubsection{Data objects}
-The users will have username and password for authentication. After login, their first name and last name will be displayed on the homepage. For professors, they additionally have titles and institutions, which are helpful in future refinements.
+The users will have username and password for authentication. After login, their first name and last name will be displayed on the homepage. For professors, they additionally have titles and institutions, which are useful in future refinements.
 
 A course has course contents, assignments and quizzes. Contents will be simple .doc or .pdf files, and an assignment will contain a description and a supplementary file, if deemed necessary. Quizzes will have multiple MC questions with four choices each. Each quiz question will have one correct answer. Students will submit their quiz or assignment submission, which may contain a supplementary file if deemed necessary. Grade is either a floating point value or A, B, C, D, F (and their subgrades), and is associated with assignment and quiz submissions.
 
@@ -294,6 +299,9 @@ This section will focus on the design of Edo in terms of its components, and it 
 
 The following components together perform the essential functionalities of Edo. All components rely on and are triggered by the user event handler, which is a widely used web component. Therefore web components are omitted for the component interface part.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Refer to this page http://www.codingthearchitecture.com/2015/03/31/components\_vs\_classes.html%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Login Component}
 \begin{enumerate}
 	\item Processing narrative for component
