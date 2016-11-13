@@ -90,34 +90,35 @@ The following abbreviations are used throughout this document.
 \subsubsection{Statement of scope}
 \begin{enumerate}
 	\item Description
-	\par Edo is a learning platform between professors and students where professors can upload assignments and set up quizzes and students can upload their assignment answers and complete quizzes. After the quizzes and assignments are assessed, the grades can be given to students by professors and students may login their account to view their grades.
+	\par Edo is a learning platform between professors and students where professors can upload assignments and set up quizzes and students can upload their assignment answers and complete quizzes. After the quizzes and assignments are assessed, professors can give their students grades, and students may login their accounts to view their grades.
 	\item Major inputs
-	\par Major inputs include course resources, including notes, assignment files and quiz questions from teachers and assessment submissions from students.
+	\par Major inputs include course resources, such as notes, assignment files and quiz questions from teachers and assessment submissions from students.
 	\item Processing Functionality
 	\par Edo should be able to process the uploaded file and course assessment information and return the corresponding results, such as the desired course content and attempted grades efficiently.
 	\item Outputs
-	\par Course content in the form of a web link displayed on the screen. The grades for each assignment and quiz are also available. 
+	\par Course content in the form of a web link displayed on the screen. The grades for each assessment. 
 	\item Functionality priority
 	\begin{itemize}
 		\item Essential
 		\begin{itemize}
 			\item Correctness, all files should be returned correctly and no wrong file or content should be returned
+			\item Basic security: We guarantee the integrity of the users and confidentiality of data processed.
 			\item Availability, the system should be available 24/7, as the students and professors should be able to access Edo anytime for uploading and viewing files.
 		\end{itemize}
 		\item Desirable
 		\begin{itemize}
-			\item Security: the files should be kept secure from illegal or malicious access since it involves copyright and privacy issues
-			\item The system should be immune from DDoS attack.
+			\item More security issues: the system should be immune from DDoS attack; the system should be able to detect malicious accesses.
+			The system allows users to upload files from third-party storage systems like Google Drive, Dropbox, Onedrive, etc.
 		\end{itemize}
 		\item Future
 		\begin{itemize}
-			\item Speed: the files should be uploaded and returned at at least 500Kb/s since otherwise the student might miss the deadline due to the low transmission speed.
+			\item Speed: the files should be uploaded and returned at at least 500Kb/s since otherwise a student might miss the deadline due to the low transmission speed.
 		\end{itemize}
 	\end{itemize}	
 \end{enumerate}
 
 \subsubsection{Software context}
-Edward is the president of a newly founded university, Edward University of Smartness. EUS has recruited professors and admitted undergraduate students, and it needs a learning platform for professors to post assignments and quizzes, and for students to upload assignments and complete quizzes. Therefore, Edward would like to hire our programming team to develop a course management system, named Edo, for EUS.
+Edward is the president of a newly founded university, Edward University of Smartness. EUS has recruited professors and admitted undergraduate students, and it needs a learning platform for professors to post assignments and quizzes, and for students to upload assignments and complete quizzes. Therefore, Edward would like to hire our programming team to develop a course management system Edo, for EUS.
 \subsubsection{Major constraints}
 The development of Edo is mostly limited by the time of delivery since the EUS will start its first semester in 2017 Fall and the system is in urgent need. Therefore this project will only deliver the core functionality of Edo. After delivery, Edo will be further refined in future endeavors.
 
@@ -125,8 +126,8 @@ The development of Edo is mostly limited by the time of delivery since the EUS w
 
 \subsubsection{User profiles}
 \begin{itemize}
-	\item The students of EUS: This user will have the access to his/her registered courses and view all the related course contents. They can also submit the assignment answers and answer quiz questions posted on Edo.
-	\item The professors of EUS: This user will have access to create the course information in Edo and upload corresponding course materials, including course note, course assignment and quizzes on Edo for students' reference.
+	\item The students of EUS: This user has access to his/her registered courses and view all the related course contents. They can also submit the assignment answers and answer quiz questions posted on Edo.
+	\item The professors of EUS: This user is allowed to create the course information in Edo and upload corresponding course materials, including notes, assignments and quizzes on Edo for students' reference. He/She can also grade the assessments for his/her courses.
 \end{itemize}
 
 
@@ -136,42 +137,43 @@ The development of Edo is mostly limited by the time of delivery since the EUS w
 	\par Student view course
 	\begin{enumerate}
 		\item The student enters his/her username and password, and clicks the enter button.
-		\item The student logs in Edo and enter his/her personal homepage.
+		\item The student logs in Edo and enters his/her personal homepage. 
+		\item The homepage shows a list of courses he/she has registered in the semester.
 		\item The student clicks a course displayed on the personal homepage.
-		\item The course notes, course assignment and course quizzes are shown.
+		\item The system lists the notes, assignments and quizzes related to the course.
 	\end{enumerate}
 	\par Student view course content
 	\begin{enumerate}
-		\item The student clicks one course note, and the course note is downloaded.
+		\item The student clicks one course notes, and the computer downloads the course notes.
 	\end{enumerate}
 	\par Student answer assignment
 	\begin{enumerate}
-		\item The student clicks one assignment, and the assignment introduction and guide is displayed.
-		\item The student upload his answer to the assignment to Edo.
-		\item The student clicks finish.
+		\item The student clicks one assignment, and the page shows the assignment's introduction and guide.
+		\item The student uploads his/her answer to the assignment to Edo.
+		\item The student clicks the finish button on the page.
 	\end{enumerate}
 	\par Student answer quiz
 	\begin{enumerate}
 		\item The student clicks one course quiz, and the quiz questions are displayed.
-		\item The student chooses one of the four choices for each quiz question by ticking the box ahead of each choice, and clicks submit button.
-		\item The student clicks the completed assignment and quiz, the grades, if available, will be shown to them. 
+		\item The student chooses one of the four choices for each quiz question by ticking the box ahead of each choice, and clicks the submit button.
+		\item The student clicks the completed assignment and quiz. The grades, if available, will be shown to them. 
 	\end{enumerate}
 	\par Professor View course
 	\begin{enumerate}
 		\item The professor enters his/her username and password, and clicks the enter button.
-		\item The professor enters the personal homepage, and clicks on a course he teaches.
+		\item The professor enters his/her personal homepage, and clicks on a course he teaches.
 	\end{enumerate}
 	\par Professor create assignment
 	\begin{enumerate}
-		\item The professor clicks the create content button, and chooses one file from his/her PC for upload.
+		\item The professor clicks the create content button, and chooses one file from his/her PC to upload.
 		\item The professor clicks the create assignment button, and enters the assignment information and chooses a file for that assignment.
 		\item The professor clicks the submit button, and the assignment is created.
-		\item The professor clicks the assignment submission button to view all assignment submissions, and give grades to those submissions by entering the grades in the grade bar.
+		\item The professor clicks the assignment submission button to view all assignment submissions, and marks those submissions by entering the grades in the grade bar.
 	\end{enumerate}
 	\par Professor create quiz
 	\begin{enumerate}
 		\item The professor clicks create quiz.
-		\item The professor enters the name of the quiz.
+		\item The professor enters the title of the quiz.
 		\item The professor sets up one MC question.
 		\item The professor enters the description of the MC question.
 		\item Then, the teacher enters the four options for the MC question.
@@ -195,12 +197,12 @@ The development of Edo is mostly limited by the time of delivery since the EUS w
 \subsection{Data Model and Description}
 
 \subsubsection{Data objects}
-The users will have username and password for login. After login, their first name and last name will be displayed on the homepage. For professors, they additionally have titles and institutions, which are helpful in future refinements.
+The users will have username and password for authentication. After login, their first name and last name will be displayed on the homepage. For professors, they additionally have titles and institutions, which are helpful in future refinements.
 
-A course has course contents, assignments and quizzes. Contents will be simple doc or pdf files, and the assignment will contain a description and a supplementary file, if deemed necessary. Quizzes will have multiple MC questions with four choices. Each quiz question will have one correct answer. Student will submit their quiz or assignment submission, which may contain a supplementary file if deemed necessary. Grade is either a floating point value or A, B, C, D, F (and their subgrades), and is associated with assignment and quiz submissions.
+A course has course contents, assignments and quizzes. Contents will be simple .doc or .pdf files, and an assignment will contain a description and a supplementary file, if deemed necessary. Quizzes will have multiple MC questions with four choices each. Each quiz question will have one correct answer. Students will submit their quiz or assignment submission, which may contain a supplementary file if deemed necessary. Grade is either a floating point value or A, B, C, D, F (and their subgrades), and is associated with assignment and quiz submissions.
 
 \subsubsection{Relationships}
-One student may take many courses, and one professors may teach many courses. For each course, it has multiple course contents, courses assignments and course quizzes. For each quiz, it has multiple quiz questions and each quiz question will have four choices. Each assessment will have multiple submissions from students, and each student submission will have only one grade. 
+One student may take multiple courses, and one professors may teach multiple courses. For each course, it has multiple course contents, courses assignments and course quizzes. Each quiz has multiple questions and each question will have four choices. Each assessment will have multiple submissions from students, and each student submission will have only one grade. 
 
 \subsubsection{Complete data model}
 \begin{figure}[!ht]
@@ -236,10 +238,10 @@ One student may take many courses, and one professors may teach many courses. Fo
 		\item Student logged in state
 		\item Professor logged in state
 		\item View course content state: course content including notes, assignments and quizzes are displayed.
-		\item View note, assignment, quiz states: the corresponding content is displayed.
+		\item View notes, assignment, quiz states: the corresponding content is displayed.
 		\item Do assignment, quiz states: the answers are stored by the system and ready for upload.
 		\item Upload content, assignment, quiz state: the content, assignment and quiz is being prepared and completed by professors and is ready for upload.
-		\item Give grade: the professors are giving grades to the submitted assignment. \footnote{Quizzes are auto graded since each quiz question is set with a correct answer.}
+		\item Grade: the professors are giving grades to the submitted assignment. \footnote{Quizzes are auto graded since each quiz question is set with a correct answer.}
 		\item View grade: the students may view their attempted grades of assignments and quizzes.
 	\end{itemize}
 \end{itemize}
@@ -281,7 +283,7 @@ This section will focus on the design of Edo in terms of its components, and it 
 
 \subsection{Description for Components}
 
-The following components together perform the essential functionalities of Edo. All components rely on and are triggered by the user event handler, which is a widely used web component. Therefore web component is omitted for the component interface part.
+The following components together perform the essential functionalities of Edo. All components rely on and are triggered by the user event handler, which is a widely used web component. Therefore web components are omitted for the component interface part.
 
 \subsubsection{Login Component}
 \begin{enumerate}
@@ -378,7 +380,7 @@ This prototype of the Edo user interface is shown as below.
 
 
 \subsubsection{Interface design rules}
-The interface should have high clarity to facilitate the use of Edo. In each page, only the navigation bar and the corresponding content shall be visible. E.g. in course information page, only the course note, course assignment and couse quiz will be displayed, but in course note, course assignment and quiz will not be shown.
+The interface should have high clarity to facilitate the use of Edo. In each page, only the navigation bar and the corresponding content shall be visible. E.g. in course information page, only the course notes, course assignment and couse quiz will be displayed, but in course note, course assignment and quiz will not be shown.
 
 \subsubsection{Interface Components available}
 Edo will be put online and thus all the web based components, such as bootstrap, javascript and angular js are all available for development. 
