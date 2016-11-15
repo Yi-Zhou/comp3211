@@ -91,7 +91,7 @@ This project aims at developing an online course management system (Edo) for Edw
 \subsubsection{Statement of scope}
 \begin{enumerate}
 	\item Description
-	\par Edo is a course management system between professors and students where professors can upload assignments and set up quizzes and students can upload their assignment answers and complete quizzes. After the quizzes and assignments are assessed, the grades can be given to students by professors and students may login their accounts to view their grades.
+	\par Edo is a course management system for both professors and students where professors can upload assignments and set up quizzes and students can upload their assignment answers and complete quizzes. After the quizzes and assignments are assessed, the grades can be given to students by professors and students may login their accounts to view their grades.
 	\item Major inputs
 	\par Major inputs include course resources, such as notes, assignment files and quiz questions from teachers and assessment submissions from students.
 	\item Processing Functionality
@@ -307,7 +307,7 @@ The following components together perform the essential functionalities of Edo. 
 	\item Processing narrative for component
 	\par This component will be responsible for user login. The user enters the username and password, and if they match, the user is thereafter logged in.
 	\item Components interface description
-	\par This component will have an interface with the student account system of EUS to validate the usersname and password since the student account information is only stored in the student account system.
+	\par This component will have an interface with the account system of EUS to validate the username and password since the student account information is only stored in the account system.
 	\item Components processing detail
 	\begin{itemize}
 		\item Restrictions/limitations for component
@@ -317,7 +317,7 @@ The following components together perform the essential functionalities of Edo. 
 		\item Design constraints for component 
 		\par Login is largely dependent on the transmission between Edo and the account system, and thus the responsiveness may not be guaranteed. The username and password will be limited to a maximum of 32 characters.
 		\item Processing detail for each operation of component 
-		\par First the user will enter the user name and the password, and then this component will forward the username to the account information system for password. When the reply from the account information system is received, this component will compare the passwords to decide if this authentication is successful or not. If successful, the user will be directed to his/her homepage, otherwise the user will be prompted to enter the password again.
+		\par First, the system will call a function from the account information system of EUS for login operation. Then, a login form is displayed on the screen, and the user will enter his/her username and password into the form. The input is authenticated by the account information system. All of the authentication details are encapsulated in the account information system. After login, a token will be returned from the account information system. If the token is valid, the user will be logged in.
 	\end{itemize}
 \end{enumerate}
 
@@ -330,16 +330,15 @@ The following components together perform the essential functionalities of Edo. 
 	\item Components processing detail
 	\begin{itemize}
 		\item Restrictions/limitations for component
-		\par This system is run once per day during the add/drop period, and will be disabled after the add/drop period. Therefore the students are strictly not allowed to drop any course from the course registration system after the add/drop period.
-		
+		\par The retrieval process is run right after the registration period finishes. Therefore the students are strictly not allowed to drop any course from the course registration system after the course registration period. 
 		\item Performance issues for component 
-		\par This system also greatly rely on the network performance, and the data to be transmitted is large in size. Therefore the students may not get timely updates. 
+		\par This system also greatly relies on the network performance, and the data to be transmitted is large in size. Therefore, it may take several minutes to finish the retrieval process. 
 		\item Processing detail for each operation of component 
-		\par Once per day during the add/drop period, this component will retrieve the course registration information from the registration system and compare it with its current course database to delete those out-of-date course-student relationships stored in the resource management component.
+		\par Edo will query the course registration system for course registration information and stores related initialize its own database through the data obtained.
 	\end{itemize}
 \end{enumerate}
 
-\subsubsection{Resource Upload}
+\subsubsection{Resource Uploading}
 \begin{enumerate}
 	\item Processing narrative for component
 	\par This component will handle the uploading request made by professors and students.
@@ -350,7 +349,7 @@ The following components together perform the essential functionalities of Edo. 
 		\item Restrictions/limitations for component
 		\par This component is sensitive to the input file size, and the size of each file should be limited to maximum 5 MB.
 		\item Performance issues for component 
-		\par The performance might decline as the number of files to be submitted grow.
+		\par The performance might decline as the number of files to be submitted grows.
 		\item Processing detail for each operation of component 
 		\par The user chooses one file to be uploaded, and clicks the submit button. This component will forward the file to the resource management component, and redirect the user back to the course information page.
 	\end{itemize}
@@ -368,7 +367,7 @@ The following components together perform the essential functionalities of Edo. 
 		\item Restrictions/limitations for component
 		\par This component is sensitive to the input file size, and the size of each file should be limited to maximum 5 MB.
 		\item Performance issues for component 
-		\par The performance might decline as the number of files grow.
+		\par The performance might decline as the number of files grows.
 		\item Processing detail for each operation of component 
 		\par When the user uploads a file to assignment or content, this component will record the label of that origin and associate the uploaded file with the fingerprint of that origin. Later when the document is requested by the user, this component will retrieve the file using the origin and return it to the user.
 	\end{itemize}
@@ -379,7 +378,7 @@ The following components together perform the essential functionalities of Edo. 
 
 
 \subsubsection{External machine interface}
-Edo will be an online platform and thus the users are required to use the browser and enter the URL or Edo to access this system. The physical machine could be either PC or tablets.
+Edo will be an online platform and thus the users are required to use the browser and enter the URL or Edo to access \thispagestyle{?}s system. The physical machine could be either PC or tablets.
 
 \subsubsection{External system interface}
 Edo will be exchanging data with the student account system and the web system that carries out the data transmission. 
