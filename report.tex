@@ -197,11 +197,13 @@ The development of Edo is mostly limited by the time of delivery since the EUS w
 	\end{enumerate}
 	
 	\item Use-Case Diagram
+	\par See Figure \ref{usecase}
 	\begin{figure}[!ht]
 		\begin{center}
-			%\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{usecase}
+			\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{usecase}
 		\end{center}
 		\caption{Use case diagram}
+		\label{usecase}
 	\end{figure}
 	
 \end{itemize}
@@ -219,11 +221,13 @@ A course has course contents, assignments and quizzes. Contents will be simple .
 One student may take multiple courses, and one professors may teach multiple courses. For each course, it has multiple course contents, courses assignments and course quizzes. Each quiz has multiple questions and each question will have four choices. Each assessment will have multiple submissions from students, and each student submission will have only one grade. 
 
 \subsubsection{Complete data model}
+See Figure \ref{data}
 \begin{figure}[!ht]
 	\begin{center}
-		%\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{datamodel}
+		\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{data_model}
 	\end{center}
 	\caption{Data Model of Edo}
+	\label{data}
 \end{figure}
 
 
@@ -260,13 +264,34 @@ One student may take multiple courses, and one professors may teach multiple cou
 	\end{itemize}
 \end{itemize}
 
-\subsubsection{State-chart Diagram}
+\subsubsection{State Machine Diagram}
+See Figure \ref{state}
 \begin{figure}[!ht]
 	\begin{center}
-		%\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{statechart}
+		\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{state}
 	\end{center}
-	\caption{State Chart Diagram of Edo}
+	\caption{State Machine Diagram of Edo}
+	\label{state}
 \end{figure}
+
+\subsubsection{Sequence Diagram}
+See Figure \ref{stud} for sequence diagram for students and \ref{prof} for sequence diagram for professors.
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{studSeq}
+	\end{center}
+	\caption{Sequence Diagram for Students}
+	\label{stud}
+\end{figure}
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{profSeq}
+	\end{center}
+	\caption{Sequence Diagram for Professors}
+	\label{prof}
+\end{figure}
+
 
 
 \subsection{Restrictions, Limitations, and Constraints}
@@ -286,12 +311,13 @@ Edo is highly dependent on network performance, and thus the response time is no
 This section will focus on the design of Edo in terms of its components, and it is shown through its class diagram.
 
 \subsubsection{Class Diagram}
-
+See Figure \ref{classs}
 \begin{figure}[!ht]
 	\begin{center}
-		%\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{class}
+		\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{class}
 	\end{center}
 	\caption{Class Diagram of Edo}
+		\label{classs}
 \end{figure}
 
 
@@ -326,7 +352,7 @@ The following components together perform the essential functionalities of Edo. 
 	\item Processing narrative for component
 	\par This component will retrieve the course registration information from the registration system as the semester begins and initialize the database of assignments, notes and quizzes for each course.
 	\item Components interface description
-	\par This component will retrieve the courses taken/taught by the users and use that information to initialize the database.
+	\par This component will retrieve the courses taken/taught by the users and use that information to initialize the database and pass it to resource management system
 	\item Components processing detail
 	\begin{itemize}
 		\item Restrictions/limitations for component
@@ -338,22 +364,7 @@ The following components together perform the essential functionalities of Edo. 
 	\end{itemize}
 \end{enumerate}
 
-\subsubsection{Resource Uploading}
-\begin{enumerate}
-	\item Processing narrative for component
-	\par This component will handle the uploading request made by professors and students.
-	\item Components interface description
-	\par This component will send the uploaded file to the resource management system for storing purpose.
-	\item Components processing detail
-	\begin{itemize}
-		\item Restrictions/limitations for component
-		\par This component is sensitive to the input file size, and the size of each file should be limited to maximum 5 MB.
-		\item Performance issues for component 
-		\par The performance might decline as the number of files to be submitted grows.
-		\item Processing detail for each operation of component 
-		\par The user chooses one file to be uploaded, and clicks the submit button. This component will forward the file to the resource management component, and redirect the user back to the course information page.
-	\end{itemize}
-\end{enumerate}
+
 
 
 \subsubsection{Resource Management}
