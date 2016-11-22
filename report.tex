@@ -42,7 +42,7 @@
 		\usefont{OT1}{bch}{b}{n}
 		\normalfont \normalsize \textsc{COMP3211 Software Engineering} \\ [25pt]
 		\horrule{0.5pt} \\[0.4cm]
-		\huge Software requirements and design specifications
+		\huge Software requirements and design specifications\footnote{Please note that some of the figures are appended to the end of this document for clarity and formatting concerns.}
 		\horrule{2pt} \\[0.5cm]
 }
 \author{
@@ -221,12 +221,12 @@ A course has course contents, assignments and quizzes. Contents will be simple .
 One student may take multiple courses, and one professors may teach multiple courses. For each course, it has multiple course contents, courses assignments and course quizzes. Each quiz has multiple questions and each question will have four choices. Each assessment will have multiple submissions from students, and each student submission will have only one grade. 
 
 \subsubsection{Complete data model}
-See Figure \ref{data}
+See Figure \ref{data}. Data model is presented in the Entity Relationship Diagram.
 \begin{figure}[!ht]
 	\begin{center}
-		\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{data_model}
+		\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{ERD}
 	\end{center}
-	\caption{Data Model of Edo}
+	\caption{Data Model of Edo (ERD)}
 	\label{data}
 \end{figure}
 
@@ -274,23 +274,8 @@ See Figure \ref{state}
 	\label{state}
 \end{figure}
 
-\subsubsection{Sequence Diagram}
-See Figure \ref{stud} for sequence diagram for students and \ref{prof} for sequence diagram for professors.
-\begin{figure}[!ht]
-	\begin{center}
-		\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{studSeq}
-	\end{center}
-	\caption{Sequence Diagram for Students}
-	\label{stud}
-\end{figure}
 
-\begin{figure}[!ht]
-	\begin{center}
-		\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{profSeq}
-	\end{center}
-	\caption{Sequence Diagram for Professors}
-	\label{prof}
-\end{figure}
+
 
 
 
@@ -324,6 +309,18 @@ See Figure \ref{classs}
 \subsection{Description for Components}
 
 The following components together perform the essential functionalities of Edo. All components rely on and are triggered by the user event handler, which is a widely used web component. Therefore web components are omitted for the component interface part.
+
+
+\subsubsection{Major Component Overview}
+The major components of Edo are shown below in an architectural diagram. See Figure \ref{archi}
+	
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{archi}
+	\end{center}
+	\caption{Architectural Diagram of Edo}
+	\label{archi}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Refer to this page http://www.codingthearchitecture.com/2015/03/31/components\_vs\_classes.html%
@@ -385,6 +382,40 @@ The following components together perform the essential functionalities of Edo. 
 \end{enumerate}
 
 
+\subsection{Dynamic Behaviors of components and classes}
+In this subsection we present the dynamic behaviors of Edo in runtime. When deployed in EUS, the comprising components and classes will interact in a specific manners inscribed as below.
+
+\subsubsection{Activity Diagram}
+In this section we focus on the individual responsibilities of components, and the activity diagram is presented as a swimlane diagram. See Figure \ref{activity} \footnote{Here login is required but intentionally omitted for simplicity issue. Basically both users will login Edo using their own usernames and passwords.}
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{activity_diagram}
+	\end{center}
+	\caption{Activity Diagram of Edo}
+	\label{activity}
+\end{figure}
+
+
+\subsubsection{Sequence Diagram}
+Sequence diagram will show the responsibility and sequence of execution in terms of classes and their instances. See Figure \ref{stud} for sequence diagram for students and \ref{prof} for sequence diagram for professors.
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{studSeq}
+	\end{center}
+	\caption{Sequence Diagram for Students}
+	\label{stud}
+\end{figure}
+
+\begin{figure}[!ht]
+	\begin{center}
+		\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{profSeq}
+	\end{center}
+	\caption{Sequence Diagram for Professors}
+	\label{prof}
+\end{figure}
+
+
+
 \subsection{Interface design}	
 
 
@@ -398,7 +429,7 @@ Edo will be exchanging data with the student account system and the web system t
 This prototype of the Edo user interface is shown as below.
 \begin{figure}[!ht]
 	\begin{center}
-		%\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{interface}
+		\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{interface}
 	\end{center}
 	\caption{User interface}
 \end{figure}
